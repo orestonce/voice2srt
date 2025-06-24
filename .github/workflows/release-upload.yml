@@ -34,9 +34,11 @@ jobs:
           cd ..
           dir voice2srt_windows_x64-${{ github.ref_name }}
           7z a voice2srt_windows_x64-${{ github.ref_name }}.7z voice2srt_windows_x64-${{ github.ref_name }}
+          dir
+          move voice2srt_windows_x64-${{ github.ref_name }}.7z voice2srt\
       - name: upload release voice2srt_windows_x64
         uses: Guerra24/upload-to-release@v1
         with:
           name: voice2srt_windows_x64-${{ github.ref_name }}.7z
-          path: ..\voice2srt_windows_x64-${{ github.ref_name }}.7z
+          path: voice2srt_windows_x64-${{ github.ref_name }}.7z
           repo-token: ${{ secrets.GITHUB_TOKEN }}
