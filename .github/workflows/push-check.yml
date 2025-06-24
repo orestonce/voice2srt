@@ -19,10 +19,11 @@ jobs:
           version: Qt5.15.7-Windows-x86_64-MinGW8.1.0-staticFull-20221104
       - name: build
         run: |
-          cd voice2srt && qmake && mingw32-make release && cd ..
-          dir voice2srt\release\voice2srt.exe
+          cd qmake && mingw32-make release
+          dir release\voice2srt.exe
       - name: pack
         run: |
+          cd ..
           mkdir voice2srt_windows_x64-${{ github.ref_name }} && cd voice2srt_windows_x64-${{ github.ref_name }}
           copy ..\voice2srt\release\voice2srt.exe .\
           Invoke-WebRequest -URI "https://github.com/orestonce/voice2srt/releases/download/v0.1/resource.7z" -OutFile resource.7z
